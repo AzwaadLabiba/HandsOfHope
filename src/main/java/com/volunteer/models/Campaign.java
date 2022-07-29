@@ -20,17 +20,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 
-
-public class Volunteer {
+public class Campaign {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer id;
-	private String f_name;
-	private String l_name;
-	private String email;
-	private String password;
+	private String name;
+	private String type;
 	private String city;
+	private String start_date;
+	private String end_date;
 	
 	@ManyToOne
 	@JoinColumn(name="organizer_id", insertable=false, updatable=false)
@@ -38,6 +37,8 @@ public class Volunteer {
 	private Integer organizer_id;
 	
 	private String details;
+	
+	
 	
 
 }

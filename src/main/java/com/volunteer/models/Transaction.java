@@ -21,21 +21,30 @@ import lombok.NoArgsConstructor;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 
 
-public class Volunteer {
+public class Transaction {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer id;
-	private String f_name;
-	private String l_name;
-	private String email;
-	private String password;
-	private String city;
+	private String paidby;
+	private String amount;
+	private String paidto;
+	private String transaction_id;
 	
 	@ManyToOne
 	@JoinColumn(name="organizer_id", insertable=false, updatable=false)
 	private Organizer organizer;
 	private Integer organizer_id;
+	
+	@ManyToOne
+	@JoinColumn(name="sponsor_id", insertable=false, updatable=false)
+	private Sponsor sponsor;
+	private Integer sponsor_id;
+	
+	@ManyToOne
+	@JoinColumn(name="volunteer_id", insertable=false, updatable=false)
+	private Volunteer volunteer;
+	private Integer volunteer_id;
 	
 	private String details;
 	
