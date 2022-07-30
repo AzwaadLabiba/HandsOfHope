@@ -34,6 +34,7 @@ public class Organizer {
 	
 	@OneToMany(mappedBy="organizer")
 	private List<Campaign> campaigns;
+	@OneToMany(mappedBy="organizer")
 	private List<Volunteer> volunteers;
 
 }

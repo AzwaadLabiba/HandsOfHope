@@ -30,6 +30,7 @@ public class Campaign {
 	private String city;
 	private String start_date;
 	private String end_date;
+	private String status;
 	
 	@ManyToOne
 	@JoinColumn(name="organizer_id", insertable=false, updatable=false)
