@@ -42,7 +42,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-         <!--<li><a href="#"></a></li>
+          <!--<li><a href="#"></a></li>
                <li class="dropdown"><a href=""><span>Campaigns</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a th:href="@{/previous_campaigns}">Previous Campaigns</a></li>
@@ -55,14 +55,14 @@
               <li><a th:href="@{/organizer}">Organizer</a></li>
               <li><a th:href="@{/volunteer}">Volunteers</a></li>
               <li><a th:href="@{/sponsor}">Sponsors</a></li>
-          	  <li><a th:href="@{/transactions}">Transactions</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-	  <div>
-      <a th:href="@{/user}" class="get-started-btn scrollto">Profile</a>
-      <a th:href="@{/index}" class="get-started-btn scrollto">Logout</a>
-      </div>
+          <li><a th:href="@{/transactions}">Transactions</a></li>
+	        </ul>
+	        <i class="bi bi-list mobile-nav-toggle"></i>
+	      </nav><!-- .navbar -->
+		  <div>
+		      <a th:href="@{/user}" class="get-started-btn scrollto">Profile</a>
+		      <a th:href="@{/index}" class="get-started-btn scrollto">Logout</a>
+	      </div>
 
     </div>
   </header><!-- End Header -->
@@ -93,44 +93,42 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Volunteers</h2>
-          <p>List of Volunteers</p>
+          <h2>Campaigns</h2>
+          <p>List of Campaigns</p>
         </div>
          
         <div class="col-lg-12">
-        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#addModal">Add New Volunteer</button>
+        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#addModal">Add New Campaign</button>
 		<table class="table table-hover table-warning">
 		<thead>
 		  <tr>
 		    <th align="center">Id</th>
-		    <th align="center" colspan="2">Name</th>
-		    <th align="center">Email</th>
+		    <th align="center">Campaign Name</th>
+		    <th align="center">Start Date</th>
+		    <th align="center">End Date</th>
 		    <th align="center">City</th>
-		    <th align="center">Gender</th>
-		    <th align="center">Contact</th>
-		    <th align="center">Actions</th>
+		    <th align="center">Status</th>
+		    <th align="justify">Action</th>
 		  </tr>
 		 </thead>
 		 <tbody>
 		 
-		  <tr th:each="volunteer: ${volunteerList}">
+		  <tr th:each="campaign: ${campaignsList}">
 		  
-		    <td th:text="${volunteer.id}"></td>
-		    <td th:text="${volunteer.f_name}"></td>
-		    <td th:text="${volunteer.l_name}"></td>
-		    <td th:text="${volunteer.email}"></td>
-		    <td th:text="${volunteer.city}"></td>
-		    <td th:text="${volunteer.gender}"></td>
-		    <td th:text="${volunteer.contact}"></td>
+		    <td th:text="${campaign.id}"></td>
+		    <td th:text="${campaign.name}"></td>
+		    <td th:text="${campaign.start_date}"></td>
+		    <td th:text="${campaign.end_date}"></td>
+		    <td th:text="${campaign.city}"></td>
+		    <td th:text="${campaign.status}"></td>
 		    <td>
 		    <div class="btn-group">
-          		<a th:href="@{/showvolunteerUpdateForm/{id}(id=${volunteer.id})}" class="btn btn-warning">Update</a>
+          		<a th:href="@{/showcampaignUpdateForm/{id}(id=${campaign.id})}" class="btn btn-warning">Update</a>
  			</div>
  			<div class="btn-group">
-          		<a th:href="@{/deleteVolunteer/{id}(id=${volunteer.id})}" class="btn btn-dark">Delete</a>
+          		<a th:href="@{/deleteCampaign/{id}(id=${campaign.id})}" class="btn btn-dark">Delete</a>
  			</div>
 		    </td>
-		  
 		  </tr>
 		  		  
 		  </tbody>
@@ -224,30 +222,26 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Volunteer Form</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Campaign Form</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form th:action="@{/addNewVolunteer}" method="post">
+        <form th:action="@{/addNewCampaign}" method="POST">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">First Name</label>
-            <input type="text" class="form-control" id="recipient-name" name="f_name">
+            <label for="recipient-name" class="col-form-label">Campaign Name</label>
+            <input type="text" class="form-control" id="recipient-name" name="name">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Last Name</label>
-            <input type="text" class="form-control" id="recipient-name" name="l_name">
+            <label for="recipient-name" class="col-form-label">Start Date </label>
+            <input type="text" class="form-control" id="recipient-name" name="start_date">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Email</label>
-            <input type="text" class="form-control" id="recipient-name" name="email">
+            <label for="recipient-name" class="col-form-label">End Date</label>
+            <input type="text" class="form-control" id="recipient-name" name="end_date">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Gender</label>
-            <input type="text" class="form-control" id="recipient-name" name="gender">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Contact</label>
-            <input type="text" class="form-control" id="recipient-name" name="contact">
+            <label for="recipient-name" class="col-form-label">Status</label>
+            <input type="text" class="form-control" id="recipient-name" name="status">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">City</label>
@@ -266,6 +260,9 @@
   </div>
 </div>  <!-- Add Modal ends -->
 
+
+
+  
 
 
   <!-- Vendor JS Files -->

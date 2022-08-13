@@ -55,14 +55,14 @@
               <li><a th:href="@{/organizer}">Organizer</a></li>
               <li><a th:href="@{/volunteer}">Volunteers</a></li>
               <li><a th:href="@{/sponsor}">Sponsors</a></li>
-          	  <li><a th:href="@{/transactions}">Transactions</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-	  <div>
-      <a th:href="@{/user}" class="get-started-btn scrollto">Profile</a>
-      <a th:href="@{/index}" class="get-started-btn scrollto">Logout</a>
-      </div>
+          <li><a th:href="@{/transactions}">Transactions</a></li>
+	        </ul>
+	        <i class="bi bi-list mobile-nav-toggle"></i>
+	      </nav><!-- .navbar -->
+		  <div>
+		      <a th:href="@{/user}" class="get-started-btn scrollto">Profile</a>
+		      <a th:href="@{/index}" class="get-started-btn scrollto">Logout</a>
+	      </div>
 
     </div>
   </header><!-- End Header -->
@@ -93,41 +93,40 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Volunteers</h2>
-          <p>List of Volunteers</p>
+          <h2>Transactions</h2>
+          <p>List of Transactions</p>
         </div>
          
         <div class="col-lg-12">
-        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#addModal">Add New Volunteer</button>
+        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#addModal">Add New Transaction</button>
 		<table class="table table-hover table-warning">
 		<thead>
 		  <tr>
 		    <th align="center">Id</th>
-		    <th align="center" colspan="2">Name</th>
-		    <th align="center">Email</th>
-		    <th align="center">City</th>
-		    <th align="center">Gender</th>
-		    <th align="center">Contact</th>
+		    <th align="center">Paid By</th>
+		    <th align="center">Paid To</th>
+		    <th align="center">Date</th>
+		    <th align="center">Payment Method</th>
+		    <th align="center">Amount (BDT)</th>
 		    <th align="center">Actions</th>
 		  </tr>
 		 </thead>
 		 <tbody>
 		 
-		  <tr th:each="volunteer: ${volunteerList}">
+		  <tr th:each="transaction: ${transactionList}">
 		  
-		    <td th:text="${volunteer.id}"></td>
-		    <td th:text="${volunteer.f_name}"></td>
-		    <td th:text="${volunteer.l_name}"></td>
-		    <td th:text="${volunteer.email}"></td>
-		    <td th:text="${volunteer.city}"></td>
-		    <td th:text="${volunteer.gender}"></td>
-		    <td th:text="${volunteer.contact}"></td>
+		    <td th:text="${transaction.id}"></td>
+		    <td th:text="${transaction.paidby}"></td>
+		    <td th:text="${transaction.paidto}"></td>
+		    <td th:text="${transaction.date}"></td>
+		    <td th:text="${transaction.method}"></td>
+		    <td th:text="${transaction.amount}"></td>
 		    <td>
 		    <div class="btn-group">
-          		<a th:href="@{/showvolunteerUpdateForm/{id}(id=${volunteer.id})}" class="btn btn-warning">Update</a>
+          		<a th:href="@{/showtransactionUpdateForm/{id}(id=${transaction.id})}" class="btn btn-warning">Update</a>
  			</div>
  			<div class="btn-group">
-          		<a th:href="@{/deleteVolunteer/{id}(id=${volunteer.id})}" class="btn btn-dark">Delete</a>
+          		<a th:href="@{/deleteTransaction/{id}(id=${transaction.id})}" class="btn btn-dark">Delete</a>
  			</div>
 		    </td>
 		  
@@ -224,34 +223,30 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Volunteer Form</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Transaction Form</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form th:action="@{/addNewVolunteer}" method="post">
+        <form th:action="@{/addNewTransaction}" method="post">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">First Name</label>
-            <input type="text" class="form-control" id="recipient-name" name="f_name">
+            <label for="recipient-name" class="col-form-label">Paid By</label>
+            <input type="text" class="form-control" id="recipient-name" name="paidby">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Last Name</label>
-            <input type="text" class="form-control" id="recipient-name" name="l_name">
+            <label for="recipient-name" class="col-form-label">Paid To</label>
+            <input type="text" class="form-control" id="recipient-name" name="paidto">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Email</label>
-            <input type="text" class="form-control" id="recipient-name" name="email">
+            <label for="recipient-name" class="col-form-label">Date</label>
+            <input type="text" class="form-control" id="recipient-name" name="date">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Gender</label>
-            <input type="text" class="form-control" id="recipient-name" name="gender">
+            <label for="recipient-name" class="col-form-label">Payment Method</label>
+            <input type="text" class="form-control" id="recipient-name" name="method">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Contact</label>
-            <input type="text" class="form-control" id="recipient-name" name="contact">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">City</label>
-            <input type="text" class="form-control" id="recipient-name" name="city">
+            <label for="recipient-name" class="col-form-label">Amount</label>
+            <input type="text" class="form-control" id="recipient-name" name="amount">
           </div>
           <div class="form-group">
           	<button type="submit" class="btn btn-outline-warning">Submit</button>
