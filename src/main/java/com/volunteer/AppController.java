@@ -16,6 +16,9 @@ public class AppController {
 	public String viewAdminpage() {
 		return "admin";
 	}
+	
+	
+	
 
 
 }

@@ -17,6 +17,9 @@ public class UserRegistrationDto {
 		this.password = password;
 		this.city = city;
 	}
+	public UserRegistrationDto() {
+		
+	}
 	public String getF_name() {
 		return f_name;
 	}

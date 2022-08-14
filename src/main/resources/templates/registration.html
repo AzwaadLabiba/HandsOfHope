@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
@@ -45,7 +45,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#services"><span>Activities</span></a>
           <li><a href="#contactus">Contact Us</a></li>
-           
+         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar --> 
 	  <div>
@@ -66,10 +66,7 @@
           <h2>A team of changemakers</h2>
           </div>
           
-        <div>
         
-          <a href="#register_now" class="btn btn-outline-warning btn-lg">Register Now!</a>
-          </div>
         </div>
       </div>
 
@@ -79,222 +76,63 @@
 
   <main id="main">
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="assets/img/aboutpic.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-            <h3>Connecting volunteers for a better future.</h3>
-            <p class="fst-italic">
-              Volunteering is the basis of almost all non profit organizations. As volunteers contribute to non profits with a view to make a difference within a society, these organizations rely mostly on voluntary work. It is essential to ensure the connectivity of dedicated volunteers with such big and small non profit initiatives in a planned way to ensure that their time and labour is used for a proper cause. Hands of Hope intends to provide a scope for the non profit organizations to connect through a single platform in order to promote their initiatives and connect with interested volunteers.
-
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Volunteers willing and motivated to help.</li>
-              <li><i class="ri-check-double-line"></i> Organizers who need volunteers for their campaigns.</li>
-              <li><i class="ri-check-double-line"></i> Sponsors wanting to contribute for a cause.</li>
-            </ul>
-            <p class="fst-italic">
-            This is the time when humanity needs more humane hands to save itself. We encourage everyone to come together and invest towards the growth of humanity.  
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    
-    <!-- ======= Register Now Section ======= -->
+   
+    <!-- ======= Register Section Starts ======= -->
     <section id="register_now" class="register_now">
       <div class="container" data-aos="fade-up">
 		<div class="section-title">
           <h2>Registration</h2>
-          <p>Register Now</p>
+          <p>Registration Form</p>
         </div>
         <div class="row">
-          <div class="image col-lg-6" style='background-image: url("assets/img/registernow.jpg");' data-aos="fade-right"></div>
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <div class="col-lg-8 mt-5 mt-lg-0">
-			<h2>Registration Form</h2>
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            
+            <div th:if="${param.success}">
+            	<div class = "alert alert-info">Registration Successful!</div>
+            </div>
+            
+			<form th:action="@{/registration}" method="post" th:object = "${user}">
               <div class="row">
                 <div class="form-group mt-3">
-                  <input type="text" name="name" class="form-control" id="f_name" placeholder="First Name" required>
+                <label class="control-label" for="f_name">First Name</label>
+                  <input id="f_name" class="form-control" th:field="*{f_name}" required autofocus="autofocus">
                 </div>
                 <div class="form-group mt-3">
-                  <input type="text" name="name" class="form-control" id="l_name" placeholder="Last Name" required>
+                <label class="control-label" for="l_name">Last Name</label>
+                  <input id="l_name" class="form-control" th:field="*{l_name}" required autofocus="autofocus">
                 </div>
                 <div class="form-group mt-3">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                <label class="control-label" for="email">Email</label>
+                  <input class="form-control" id="email" th:field="*{email}" required autofocus="autofocus">
                 </div>
                  <div class="form-group mt-3">
-                  <input type="email" class="form-control" name="email" id="contact" placeholder="Contact" required>
+                 <label class="control-label" for="contact">Contact</label>
+                  <input class="form-control" id="contact" th:field="*{contact}" required autofocus="autofocus">
                 </div>
                  <div class="form-group mt-3">
-                  <input type="email" class="form-control" name="email" id="city" placeholder="City" required>
+                 <label class="control-label" for="city">City</label>
+                  <input class="form-control" id="city" th:field="*{city}" required autofocus="autofocus">
                 </div>
-                 <div class="form-group mt-3">
-                  <input type="email" class="form-control" name="email" id="gender" placeholder="Gender" required>
+                <div class="form-group mt-3">
+                <label class="control-label" for="password">Password</label>
+                  <input type="password" class="form-control" id="password" th:field="*{password}" required autofocus="autofocus">
                 </div>
               </div>
-              
-              
-              
+              <br>
               <div class="text-center"><button type="submit" class="btn btn-outline-warning btn-lg">Register</button></div>
+              <br>
+              <div class="text-center"><span>Already Registered?<a th:href="@{/login}"> Login Here </a></span></div>
+              
             </form>
-
-          </div>
+			</div>
           </div>
         </div>
 
       </div>
-    </section><!-- End Register Now Section -->
+    </section><!-- End Register Section -->
 
-    <!-- ======= Activities Section ======= -->
-    <section id="services" class="services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Activities</h2>
-          <p>Check our activities</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">50+ Campaigns</a></h4>
-              <p>Campaigns hosted by NGOs all around the country.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">250+ Volunteers</a></h4>
-              <p>Open for humane volunteers across the country.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4><a href="">25+ Sponsors</a></h4>
-              <p>Connect to available sponsors to host campaigns.</p>
-            </div>
-          </div>
-
-         
-
-          
-
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
-            <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Admin Team</h2>
-          <p>Admin</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Alfi Mashab Mostak</h4>
-                <span>Co Founder</span>
-              </div>
-            </div>
-          </div>
-
-          
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img">
-                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Azwaad Labiba Mohiuddin</h4>
-                <span>Co Founder</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>    
-      </section><!-- End Team Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contactus" class="contactus">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Contact Us</p>
-        </div>
-
-        <div>
-          <iframe src="https://www.google.com/maps/d/embed?mid=1Ud5DRnqhKifdeHQ0wjENsGgLp_0&ehbc=2E312F" width="1040" height="480"></iframe>
-        </div>
-
-        <div class="row mt-5">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>Dhaka, Bangladesh</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>handsofhopeinfo@gmail.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>018xxxxxxxx</p>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
+      </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

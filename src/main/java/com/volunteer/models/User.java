@@ -16,7 +16,7 @@ import javax.persistence.JoinColumn;
 
 
 @Entity
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 	
 	
@@ -34,9 +34,22 @@ public class User {
 	@JoinTable(
 			name = "users_roles",
 			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "userid", referencedColumnName = "id"))
+			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private Collection<Role> roles;
+	
+	public User(String f_name, String l_name, String email, String contact, String password, String city,
+			Collection<Role> roles) {
+		super();
+		this.f_name = f_name;
+		this.l_name = l_name;
+		this.email = email;
+		this.contact = contact;
+		this.password = password;
+		this.city = city;
+		this.roles = roles;
+	}
 
+	
 	public Integer getId() {
 		return id;
 	}
@@ -101,15 +114,4 @@ public class User {
 		this.roles = roles;
 	}
 
-	public User(String f_name, String l_name, String email, String contact, String password, String city,
-			Collection<Role> roles) {
-		super();
-		this.f_name = f_name;
-		this.l_name = l_name;
-		this.email = email;
-		this.contact = contact;
-		this.password = password;
-		this.city = city;
-		this.roles = roles;
 	}
-}

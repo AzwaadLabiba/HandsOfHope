@@ -38,7 +38,6 @@ public class Volunteer {
 	private Integer organizer_id;
 	
 	private String contact;
-	private String gender;
 	
 	public Integer getId() {
 		return id;
@@ -96,14 +95,5 @@ public class Volunteer {
 		this.contact = contact;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	
-
-	
+		
 }
