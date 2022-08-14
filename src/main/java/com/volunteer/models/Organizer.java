@@ -31,6 +31,15 @@ public class Organizer {
 	private String email;
 	private String contact;
 	
+	private String password;
+	private String city;
+	
+	@OneToMany(mappedBy="organizer")
+	private List<Campaign> campaigns;
+	@OneToMany(mappedBy="organizer")
+	private List<Volunteer> volunteers;
+
+	
 	public Integer getId() {
 		return id;
 	}
@@ -67,12 +76,5 @@ public class Organizer {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	private String password;
-	private String city;
 	
-	@OneToMany(mappedBy="organizer")
-	private List<Campaign> campaigns;
-	@OneToMany(mappedBy="organizer")
-	private List<Volunteer> volunteers;
-
 }
