@@ -17,7 +17,14 @@ public class AppController {
 		return "admin";
 	}
 	
-	
+	@GetMapping("/userNewsFeed")
+	public String viewUserProfile() {
+		return "userNewsFeed";
+	}
+	@GetMapping("/userProfile")
+	public String viewUserProfileSettings() {
+		return "userProfile";
+	}
 	
 
 
