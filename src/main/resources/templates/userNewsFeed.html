@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Hands of Hope</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="assets/css/userNewsFeed.css" />
+  
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top " style="background-color: black">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <h1 class="logo me-auto me-lg-0"><a th:href="@{/index}">Hands Of Hope<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li class="dropdown"><a href="#services"><span>Activities</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#"></a></li>
+              <li class="dropdown"><a href="#"><span>Campaigns</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a th:href="@{/previous_campaigns}">Previous Campaigns</a></li>
+                  <li><a th:href="@{/ongoing_campaigns}">Ongoing Campaigns</a></li>
+                  <li><a th:href="@{/upcoming_campaigns}">Upcoming Campaigns</a></li>
+                  
+                </ul>
+              </li>
+              <li><a th:href="@{/organizations}">Organizations</a></li>
+              <li><a th:href="@{/volunteers}">Volunteers</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+	  <div>
+      <a th:href="@{/userProfile}" class="get-started-btn scrollto">Profile</a>
+      <a th:href="@{/index}" class="get-started-btn scrollto">Logout</a>
+      </div>
+
+    </div>
+  </header>
+  <!-- Start your project here-->
+  <div class="container" align="center">
+  <div class="card" style="width: 48rem">
+    <div class="border border-left border-right px-0">
+      <div class="p-3 border-bottom">
+        <h4 class="d-flex align-items-center mb-0">
+          NewsFeed <i class="far fa-xs fa-star ms-auto text-primary"></i>
+        </h4>
+      </div>
+      <div>
+        <div class="card shadow-0">
+          <div class="card-body border-bottom pb-2">
+            <div class="d-flex">
+              
+              <div class="d-flex align-items-center w-100 ps-3">
+                <div class="w-100">
+                  <input type="text" id="form143" class="form-control form-status border-0 py-1 px-0"
+                    placeholder="Post a Campaign" />
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              
+              <div class="d-flex align-items-center">
+              <p><br></p>
+                <button type="button" class="btn btn-primary btn-rounded">Post</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+        
+       <!-- Starting of a post card -->
+         <div class="d-flex p-3 border-bottom">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (29).webp" class="rounded-circle"
+              height="50" alt="Avatar" loading="lazy" />
+            <div class="d-flex w-100 ps-3">
+              <div>
+                <a href="">
+                  <h6 class="text-body">
+                    UserProfile1
+                    <span class="small text-muted font-weight-normal">@user1</span>
+                    <span class="small text-muted font-weight-normal"> • </span>
+                    <span class="small text-muted font-weight-normal">2h</span>
+                    <span><i class="fas fa-angle-down float-end"></i></span>
+                  </h6>
+                </a>
+                <p style="line-height: 1.2;">
+                  Looking for some volunteers for <a href="">#letsMakeItGreen</a>
+                  Project by Green Society Association. 
+                  Need 10 volunteers. For registration tap the link, <a href="">JOIN_US</a>
+                </p>
+                <ul class="list-unstyled d-flex justify-content-between mb-0 pe-xl-5">
+                  <li>
+                    <i class="far fa-comment"></i>
+                  </li>
+                  <li><i class="fas fa-retweet"></i><span class="small ps-2">7</span></li>
+                  <li><i class="far fa-heart"></i><span class="small ps-2">35</span></li>
+                  <li>
+                    <i class="far fa-share-square"></i><span class="small ps-2">Join</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+           <!-- End of a post card -->
+           
+           
+          <!-- Starting of a post card -->
+         <div class="d-flex p-3 border-bottom">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (29).webp" class="rounded-circle"
+              height="50" alt="Avatar" loading="lazy" />
+            <div class="d-flex w-100 ps-3">
+              <div>
+                <a href="">
+                  <h6 class="text-body">
+                    UserProfile2
+                    <span class="small text-muted font-weight-normal">@user2</span>
+                    <span class="small text-muted font-weight-normal"> • </span>
+                    <span class="small text-muted font-weight-normal">1h</span>
+                    <span><i class="fas fa-angle-down float-end"></i></span>
+                  </h6>
+                </a>
+                <p style="line-height: 1.2;">
+                  To remove waste from the water bodies is important 
+                 So we, CholoKori, are looking for people to help us clean water in dhanmondi,  
+                  Need 20 volunteers.
+                  Location: Dhanmondi
+                  For registration tap the link, <a href="">JOIN_US</a>
+                </p>
+                <ul class="list-unstyled d-flex justify-content-between mb-0 pe-xl-5">
+                  <li>
+                    <i class="far fa-comment"></i>
+                  </li>
+                  <li><i class="fas fa-retweet"></i><span class="small ps-2">3</span></li>
+                  <li><i class="far fa-heart"></i><span class="small ps-2">20</span></li>
+                  <li>
+                    <i class="far fa-share-square"></i><span class="small ps-2">Join</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+           <!-- End of a post card -->
+          
+          <!-- Starting of a post card -->
+          <div class="d-flex p-3 border-bottom">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (29).webp" class="rounded-circle"
+              height="50" alt="Avatar" loading="lazy" />
+            <div class="d-flex w-100 ps-3">
+              <div>
+                <a href="">
+                  <h6 class="text-body">
+                    UserProfile3
+                    <span class="small text-muted font-weight-normal">@user1</span>
+                    <span class="small text-muted font-weight-normal"> • </span>
+                    <span class="small text-muted font-weight-normal">2h</span>
+                    <span><i class="fas fa-angle-down float-end"></i></span>
+                  </h6>
+                </a>
+                <p style="line-height: 1.2;">
+                  Lorem ipsum dolor, sit amet <a href="">#consectetur</a> adipisicing elit.
+                  Nobis assumenda eveniet ipsum libero mollitia vero doloremque
+                  <a href="">#perspiciatis</a> molestiae omnis, quam iure dicta reprehenderit
+                  distinctio facere labore atque, sit <a href="">#ratione</a> quo.
+                </p>
+                <ul class="list-unstyled d-flex justify-content-between mb-0 pe-xl-5">
+                  <li>
+                    <i class="far fa-comment"></i>
+                  </li>
+                  <li><i class="fas fa-retweet"></i><span class="small ps-2">7</span></li>
+                  <li><i class="far fa-heart"></i><span class="small ps-2">35</span></li>
+                  <li>
+                    <i class="far fa-share-square"></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+           <!-- End of a post card -->
+     
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- End your project here-->
+
+  <!-- MDB -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript"></script>
+</body>
+
+</html>
