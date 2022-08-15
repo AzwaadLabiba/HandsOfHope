@@ -6,6 +6,10 @@ public class UserRegistrationDto {
 	private String l_name;
 	private String email;
 	
+	private String contact;
+	private String password;
+	private String city;
+	
 	
 	public UserRegistrationDto(String f_name, String l_name, String email, String contact, String password,
 			String city) {
@@ -56,8 +60,6 @@ public class UserRegistrationDto {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	private String contact;
-	private String password;
-	private String city;
+	
 
 }
